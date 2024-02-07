@@ -16,8 +16,15 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('ejs');
-  
+ 
+  //config cors
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false
+  });
+
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(configService.get<string>('PORT')) ;  
+  await app.listen(configService.get<string>('PORT'));
 }
 bootstrap();

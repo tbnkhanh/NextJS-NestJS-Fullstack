@@ -8,6 +8,6 @@ export class CreateUserDto {
     @IsNotEmpty()
     name: string;
 
-    @IsNotEmpty({message: "Not empty"})
+    @IsNotEmpty({message: "Password must not empty"})
     password: string
 }
